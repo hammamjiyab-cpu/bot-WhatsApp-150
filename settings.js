@@ -10,15 +10,15 @@ const digits = s => String(s || '').replace(/\D/g, '')
 // ==================== 1) Developer / المطور ====================
 // Your WhatsApp number: country code + number, digits only (no + and no spaces).
 // Example: 9677XXXXXXXX      ← set DEV_NUMBER in .env
-global.DEV_NAME = env('DEV_NAME', 'Hammam')
-global.DEV_NUMBER = digits(env('DEV_NUMBER'))
+global.DEV_NAME ='Developers name or title' //حط اسم المطور او لقبه 
+global.DEV_NUMBER ='DEV_NUMBER'  //رقم المطور 
 global.owner = global.DEV_NUMBER ? [global.DEV_NUMBER] : []
 global.mods = []
 global.prems = []
 
 // ==================== 2) Bot identity / هوية البوت ====================
-global.botName = env('BOT_NAME', 'Hammam Bot')
-global.botNameShort = env('BOT_SHORT_NAME', 'Hammam')
+global.botName =' NAME Bot' //اسم البوت هنا
+global.botNameShort ='اShort bot name '   //اسم البوت القصير 
 global.botname = global.botName
 global.watermark = global.botName
 global.packname = global.botName
@@ -27,7 +27,7 @@ global.dev = global.DEV_NAME
 
 // The number the bot will run on (can be the same as DEV_NUMBER). Set BOT_NUMBER in .env.
 // Leave empty to be asked for it in the terminal on first run.
-global.botNumberCode = digits(env('BOT_NUMBER'))
+global.botNumberCode ='Bot number'  //رقم البوت الي تربطه فيه 
 
 // ==================== 3) Language / اللغة ====================
 // One line to change every bot reply: ar | en | fr | es | tr | de | ru | id | hi | ur ...
@@ -37,7 +37,7 @@ global.LANG = env('BOT_LANG', 'ar')
 global.CHANNEL_LINK = CHANNEL_LINK
 global.ch = { ch1: CHANNEL_JID, ch2: '' }
 
-// ==================== 5) Links ====================
+// ==================== 5) Links روابطك ====================
 global.yt = env('LINK_YOUTUBE', 'https://youtube.com')
 global.ig = env('LINK_INSTAGRAM', 'https://instagram.com')
 global.tk = env('LINK_TIKTOK', 'https://tiktok.com')
