@@ -1,0 +1,11 @@
+node_modules/
+.env
+session/
+subbots/
+cookies/*
+!cookies/README.txt
+firebase-service-account.json
+tmp/
+data/lang-cache.json
+data/lang.json
+*.log

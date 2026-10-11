@@ -1,0 +1,42 @@
+// plugins/hidetag.js
+// ✦ منشن مخفي — يرسل رسالتك (أو الرسالة المقتبسة) ويذكر الجميع بدون إظهار المنشن
+
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
+import { theme } from '../core/theme.js'
+
+let handler = async (m, { conn, text, participants = [], usedPrefix = '.', command }) => {
+  const users = participants.map(u => (conn.decodeJid ? conn.decodeJid(u.id) : u.id))
+  if (!users.length) return m.reply(theme.error('تعذّر جلب أعضاء المجموعة.'))
+
+  if (!text && !m.quoted) {
+    return m.reply(theme.usage('الـمـنـشـن الـمـخـفـي', `${usedPrefix}${command} نصّك`, 'أو رد على أي رسالة'))
+  }
+
+  try {
+    const q = m.quoted ? m.quoted : m
+    const c = m.quoted ? await m.getQuotedObj() : m.msg || m.text
+    const msg = conn.cMod(
+      m.chat,
+      generateWAMessageFromContent(
+        m.chat,
+        { [m.quoted ? q.mtype : 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : { text: '' || c } },
+        { quoted: m, userJid: conn.user.id }
+      ),
+      text || q.text,
+      conn.user.jid,
+      { mentions: users }
+    )
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+  } catch (e) {
+    // احتياط: نص عادي مع منشن مخفي
+    await conn.sendMessage(m.chat, { text: text || m.quoted?.text || '‎', mentions: users }, { quoted: m })
+  }
+}
+
+handler.help = ['hidetag']
+handler.tags = ['group']
+handler.command = /^(hidetag|notificar|مخفي|منشن)$/i
+handler.group = true
+handler.admin = true
+
+export default handler

@@ -1,0 +1,51 @@
+{
+  "name": "hammam-bot",
+  "version": "2.1.0",
+  "description": "Hammam Bot — WhatsApp bot built with Baileys",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "qr": "node index.js qr",
+    "rename": "node tools/rename.js"
+  },
+  "author": {
+    "name": "Hammam Jiyab"
+  },
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@whiskeysockets/baileys": "7.0.0-rc13",
+    "archiver": "^7.0.1",
+    "awesome-phonenumber": "^3.4.0",
+    "axios": "^1.9.0",
+    "chalk": "^5.4.1",
+    "cheerio": "1.0.0-rc.12",
+    "chokidar": "^5.0.0",
+    "ffmpeg-static": "^5.2.0",
+    "file-type": "^17.1.1",
+    "firebase-admin": "^13.5.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^4.0.1",
+    "formdata-node": "^6.0.3",
+    "fs-extra": "^11.2.0",
+    "google-libphonenumber": "3.2.38",
+    "google-translate-api-x": "^10.7.1",
+    "highlight.js": "^11.11.1",
+    "jimp": "^1.6.1",
+    "jszip": "^3.10.1",
+    "node-cache": "^5.1.2",
+    "node-fetch": "^3.2.0",
+    "node-webpmux": "^3.2.1",
+    "pdfkit": "^0.17.1",
+    "pino": "^9.7.0",
+    "qrcode": "^1.5.0",
+    "sharp": "^0.34.5",
+    "url-regex-safe": "^3.0.0",
+    "wa-sticker-formatter": "^4.3.2",
+    "ws": "^8.18.0",
+    "yt-search": "^2.10.3"
+  },
+  "engines": {
+    "node": ">=20.12"
+  }
+}
